@@ -103,8 +103,7 @@ $(function () {
         $('#articleContent, #myGallery').lightGallery({
             selector: '.img-item',
             // 启用字幕
-            subHtmlSelectorRelative: true,
-            showThumbByDefault: false  //2018.08.14
+            subHtmlSelectorRelative: true
         });
 
         // progress bar init
@@ -147,24 +146,27 @@ $(function () {
         }
     }
 
-
-    $(".nav-menu>li").hover(function () {
-        $(this).children('ul').stop(true, true).show();
-        $(this).addClass('nav-show').siblings('li').removeClass('nav-show');
-
-    }, function () {
-        $(this).children('ul').stop(true, true).hide();
-        $('.nav-item.nav-show').removeClass('nav-show');
-    })
-
-    $('.m-nav-item>a').on('click', function () {
-        if ($(this).next('ul').css('display') == "none") {
-            $('.m-nav-item').children('ul').slideUp(300);
-            $(this).next('ul').slideDown(100);
-            $(this).parent('li').addClass('m-nav-show').siblings('li').removeClass('m-nav-show');
-        } else {
-            $(this).next('ul').slideUp(100);
-            $('.m-nav-item.m-nav-show').removeClass('m-nav-show');
-        }
+    	
+	$(".nav-menu>li").hover(function(){
+		$(this).children('ul').stop(true,true).show();
+		 $(this).addClass('nav-show').siblings('li').removeClass('nav-show');
+		
+	},function(){
+		$(this).children('ul').stop(true,true).hide();
+		$('.nav-item.nav-show').removeClass('nav-show');
+	})
+	
+    $('.m-nav-item>a').on('click',function(){
+            if ($(this).next('ul').css('display') == "none") {
+                $('.m-nav-item').children('ul').slideUp(300);
+                $(this).next('ul').slideDown(100);
+                $(this).parent('li').addClass('m-nav-show').siblings('li').removeClass('m-nav-show');
+            }else{
+                $(this).next('ul').slideUp(100);
+                $('.m-nav-item.m-nav-show').removeClass('m-nav-show');
+            }
     });
+
+    // 初始化加载 tooltipped.
+    $('.tooltipped').tooltip();
 });
